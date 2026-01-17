@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+/* ================= PAGE TRANSITION ================= */
 body{
   margin:0;
   background:radial-gradient(circle at bottom,#020617,#111827);
@@ -17,12 +18,32 @@ body{
   animation:fadeIn .6s ease forwards;
 }
 
-body.fade-out{animation:fadeOut .4s ease forwards;}
+body.fade-out{
+  animation:fadeOut .4s ease forwards;
+}
 
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeOut{from{opacity:1;}to{opacity:0;transform:translateY(-20px);}}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-/* SAME COLLAGE STYLE */
+@keyframes fadeOut{
+  from{opacity:1;transform:translateY(0);}
+  to{opacity:0;transform:translateY(-20px);}
+}
+
+/* ================= HEADER ================= */
+header{
+  text-align:center;
+  padding:4rem 1rem 2rem;
+}
+
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+}
+
+/* ================= COLLAGE ================= */
 .collage{
   max-width:1200px;
   margin:auto;
@@ -42,7 +63,9 @@ body.fade-out{animation:fadeOut .4s ease forwards;}
   animation-delay:calc(var(--i) * .1s);
 }
 
-.photo:hover{transform:scale(1.05) rotate(0deg);}
+.photo:hover{
+  transform:scale(1.05) rotate(0deg);
+}
 
 .photo img{
   width:100%;
@@ -50,8 +73,19 @@ body.fade-out{animation:fadeOut .4s ease forwards;}
   object-fit:cover;
 }
 
-@keyframes photoIn{to{opacity:1;transform:rotate(var(--r)) translateY(0);}}
+.caption{
+  margin-top:.5rem;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  color:#111;
+  font-size:.85rem;
+}
 
+@keyframes photoIn{
+  to{opacity:1;transform:rotate(var(--r)) translateY(0);}
+}
+
+/* ================= NAV ================= */
 .nav{
   text-align:center;
   padding:3rem;
@@ -63,25 +97,65 @@ body.fade-out{animation:fadeOut .4s ease forwards;}
   padding:.8rem 1.8rem;
   border-radius:999px;
   text-decoration:none;
+  font-weight:500;
 }
 </style>
 </head>
 
 <body>
 
-<header style="text-align:center;padding:4rem 1rem 2rem">
-<h1 style="font-family:'Playfair Display',serif;font-size:3rem">More Memories</h1>
+<header>
+<h1>More Memories</h1>
 <p>Another chapter</p>
 </header>
 
 <section class="collage">
-<div class="photo" style="--r:-5deg;--i:1"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_23889928284038867.jpeg"></div>
-<div class="photo" style="--r:6deg;--i:2"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_886193453837712.jpeg"></div>
-<div class="photo" style="--r:-4deg;--i:3"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/FB_IMG_1763216470200.jpg"></div>
-<div class="photo" style="--r:8deg;--i:4"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20240818_101113.jpg"></div>
-<div class="photo" style="--r:-6deg;--i:5"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250708_163208.jpg"></div>
-<div class="photo" style="--r:5deg;--i:6"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251225_214138.jpg"></div>
-<div class="photo" style="--r:-7deg;--i:7"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_658088606932375.jpeg"></div>
+
+<div class="photo" style="--r:-6deg;--i:1">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_23889928284038867.jpeg">
+  <div class="caption">Memory 10</div>
+</div>
+
+<div class="photo" style="--r:7deg;--i:2">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_886193453837712.jpeg">
+  <div class="caption">Memory 11</div>
+</div>
+
+<div class="photo" style="--r:-4deg;--i:3">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/FB_IMG_1763216470200.jpg">
+  <div class="caption">Memory 12</div>
+</div>
+
+<div class="photo" style="--r:8deg;--i:4">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20240818_101113.jpg">
+  <div class="caption">Memory 13</div>
+</div>
+
+<div class="photo" style="--r:-5deg;--i:5">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250708_163208.jpg">
+  <div class="caption">Memory 14</div>
+</div>
+
+<div class="photo" style="--r:6deg;--i:6">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251225_214138.jpg">
+  <div class="caption">Memory 15</div>
+</div>
+
+<div class="photo" style="--r:-7deg;--i:7">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_658088606932375.jpeg">
+  <div class="caption">Memory 16</div>
+</div>
+
+<div class="photo" style="--r:9deg;--i:8">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20240818_101113.jpg">
+  <div class="caption">Memory 17</div>
+</div>
+
+<div class="photo" style="--r:-3deg;--i:9">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250708_163208.jpg">
+  <div class="caption">Memory 18</div>
+</div>
+
 </section>
 
 <div class="nav">
