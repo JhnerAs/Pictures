@@ -10,27 +10,32 @@
 <style>
 body{
   margin:0;
-  background:radial-gradient(circle at top,#111827,#020617);
+  background:radial-gradient(circle at bottom,#020617,#111827);
   font-family:Poppins,sans-serif;
   color:#e5e7eb;
   opacity:0;
   animation:fadeIn .6s ease forwards;
 }
 
-body.fade-out{ animation:fadeOut .45s ease forwards; }
+body.fade-out{
+  animation:fadeOut .45s ease forwards;
+}
 
 @keyframes fadeIn{
-  from{opacity:0;transform:translateY(16px);}
+  from{opacity:0;transform:translateY(18px);}
   to{opacity:1;transform:translateY(0);}
 }
+
 @keyframes fadeOut{
-  to{opacity:0;transform:translateY(-16px);}
+  from{opacity:1;}
+  to{opacity:0;transform:translateY(-18px);}
 }
 
 header{
   text-align:center;
   padding:4rem 1rem 2rem;
 }
+
 header h1{
   font-family:'Playfair Display',serif;
   font-size:3rem;
@@ -62,6 +67,7 @@ header h1{
   width:100%;
   height:260px;
   object-fit:cover;
+  display:block;
 }
 
 .photo::after{
@@ -70,11 +76,14 @@ header h1{
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 40%);
   opacity:0;
-  transition:opacity .3s;
+  transition:opacity .3s ease;
   pointer-events:none;
 }
 
-.photo.active::after{ opacity:1; }
+.photo.active::after{
+  opacity:1;
+}
+
 .photo.active{
   box-shadow:0 45px 90px rgba(0,0,0,.75);
   z-index:2;
@@ -84,6 +93,7 @@ header h1{
   text-align:center;
   padding:3rem;
 }
+
 .nav a{
   background:#e5e7eb;
   color:#111;
@@ -99,23 +109,51 @@ header h1{
 
 <header>
 <h1>Captured Memories</h1>
-<p>Moments that last forever</p>
+<p>The beginning</p>
 </header>
 
 <section class="collage">
-  <div class="photo" style="--r:-8deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250408_152344.jpg"></div>
-  <div class="photo" style="--r:6deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_141426.jpg"></div>
-  <div class="photo" style="--r:-4deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_204543_770.jpg"></div>
-  <div class="photo" style="--r:7deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251014_182023_173.jpg"></div>
-  <div class="photo" style="--r:-6deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251201_222558_333.webp"></div>
-  <div class="photo" style="--r:5deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251202_095353.jpg"></div>
-  <div class="photo" style="--r:-3deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251203_225449.jpg"></div>
-  <div class="photo" style="--r:9deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1395480505425068.jpeg"></div>
-  <div class="photo" style="--r:-7deg"><img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1923692601537043.jpeg"></div>
+
+<div class="photo" style="--r:-6deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250408_152344.jpg">
+</div>
+
+<div class="photo" style="--r:7deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_141426.jpg">
+</div>
+
+<div class="photo" style="--r:-4deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_204543_770.jpg">
+</div>
+
+<div class="photo" style="--r:8deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251014_182023_173.jpg">
+</div>
+
+<div class="photo" style="--r:-5deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251201_222558_333.webp">
+</div>
+
+<div class="photo" style="--r:6deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251202_095353.jpg">
+</div>
+
+<div class="photo" style="--r:-7deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251203_225449.jpg">
+</div>
+
+<div class="photo" style="--r:9deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1395480505425068.jpeg">
+</div>
+
+<div class="photo" style="--r:-3deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1923692601537043.jpeg">
+</div>
+
 </section>
 
 <div class="nav">
-  <a href="page2.html">Next Page</a>
+  <a href="page2.html">Next</a>
 </div>
 
 <script>
@@ -126,12 +164,17 @@ document.querySelectorAll('.photo').forEach(photo=>{
     const r = photo.getBoundingClientRect();
     const x = e.clientX - r.left;
     const y = e.clientY - r.top;
+
     const rx = ((y - r.height/2) / (r.height/2)) * -6;
     const ry = ((x - r.width/2) / (r.width/2)) * 6;
 
     photo.classList.add('active');
     photo.style.transform =
-      `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${base}) scale(1.05)`;
+      `perspective(700px)
+       rotateX(${rx}deg)
+       rotateY(${ry}deg)
+       rotate(${base})
+       scale(1.05)`;
   });
 
   photo.addEventListener('mouseleave',()=>{
@@ -143,8 +186,9 @@ document.querySelectorAll('.photo').forEach(photo=>{
 document.querySelectorAll('a').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
+    const target = link.href;
     document.body.classList.add('fade-out');
-    setTimeout(()=>location.href=link.href,450);
+    setTimeout(()=>location.href = target, 450);
   });
 });
 </script>
