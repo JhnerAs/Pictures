@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Captured Memories – Page 2</title>
+<title>Captured Memories</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
@@ -27,7 +27,6 @@ body.fade-out{
 }
 
 @keyframes fadeOut{
-  from{opacity:1;}
   to{opacity:0;transform:translateY(-18px);}
 }
 
@@ -113,41 +112,35 @@ header h1{
 </header>
 
 <section class="collage">
-  <div class="photo" style="--r:-6deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250408_152344.jpg">
-  </div>
 
-  <div class="photo" style="--r:7deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_141426.jpg">
-  </div>
+<div class="photo" style="--r:-6deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_23889928284038867.jpeg">
+</div>
 
-  <div class="photo" style="--r:-4deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251004_204543_770.jpg">
-  </div>
+<div class="photo" style="--r:7deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_886193453837712.jpeg">
+</div>
 
-  <div class="photo" style="--r:8deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251014_182023_173.jpg">
-  </div>
+<div class="photo" style="--r:-4deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/FB_IMG_1763216470200.jpg">
+</div>
 
-  <div class="photo" style="--r:-5deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251201_222558_333.webp">
-  </div>
+<div class="photo" style="--r:8deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20240818_101113.jpg">
+</div>
 
-  <div class="photo" style="--r:6deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251202_095353.jpg">
-  </div>
+<div class="photo" style="--r:-5deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20250708_163208.jpg">
+</div>
 
-  <div class="photo" style="--r:-7deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251203_225449.jpg">
-  </div>
+<div class="photo" style="--r:6deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/IMG_20251225_214138.jpg">
+</div>
 
-  <div class="photo" style="--r:9deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1395480505425068.jpeg">
-  </div>
+<div class="photo" style="--r:-7deg">
+  <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_658088606932375.jpeg">
+</div>
 
-  <div class="photo" style="--r:-3deg">
-    <img src="https://raw.githubusercontent.com/JhnerAs/Util/main/Icons/received_1923692601537043.jpeg">
-  </div>
 </section>
 
 <div class="nav">
@@ -155,7 +148,6 @@ header h1{
 </div>
 
 <script>
-/* Hover tilt */
 document.querySelectorAll('.photo').forEach(photo=>{
   const base = getComputedStyle(photo).getPropertyValue('--r');
 
@@ -182,7 +174,6 @@ document.querySelectorAll('.photo').forEach(photo=>{
   });
 });
 
-/* Fade-out navigation */
 document.querySelectorAll('a').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
