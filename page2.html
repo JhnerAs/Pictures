@@ -17,13 +17,17 @@ body{
   animation:fadeIn .6s ease forwards;
 }
 
-body.fade-out{ animation:fadeOut .45s ease forwards; }
+body.fade-out{
+  animation:fadeOut .45s ease forwards;
+}
 
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(16px);}
-  to{opacity:1;}
+  to{opacity:1;transform:translateY(0);}
 }
+
 @keyframes fadeOut{
+  from{opacity:1;transform:translateY(0);}
   to{opacity:0;transform:translateY(-16px);}
 }
 
@@ -31,6 +35,7 @@ header{
   text-align:center;
   padding:4rem 1rem 2rem;
 }
+
 header h1{
   font-family:'Playfair Display',serif;
   font-size:3rem;
@@ -51,16 +56,19 @@ header h1{
   padding:.75rem .75rem 1.4rem;
   box-shadow:0 25px 50px rgba(0,0,0,.45);
   transform:rotate(var(--r));
-  transition:transform .35s cubic-bezier(.22,1,.36,1),
-             box-shadow .35s cubic-bezier(.22,1,.36,1);
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    box-shadow .35s cubic-bezier(.22,1,.36,1);
   transform-style:preserve-3d;
   will-change:transform;
+  cursor:pointer;
 }
 
 .photo img{
   width:100%;
   height:260px;
   object-fit:cover;
+  display:block;
 }
 
 .photo::after{
@@ -69,22 +77,31 @@ header h1{
   inset:0;
   background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 40%);
   opacity:0;
-  transition:opacity .3s;
+  transition:opacity .3s ease;
+  pointer-events:none;
 }
 
-.photo.active::after{ opacity:1; }
-.photo.active{ box-shadow:0 45px 90px rgba(0,0,0,.75); }
+.photo.active::after{
+  opacity:1;
+}
+
+.photo.active{
+  box-shadow:0 45px 90px rgba(0,0,0,.75);
+  z-index:2;
+}
 
 .nav{
   text-align:center;
   padding:3rem;
 }
+
 .nav a{
   background:#e5e7eb;
   color:#111;
   padding:.8rem 1.8rem;
   border-radius:999px;
   text-decoration:none;
+  font-weight:500;
 }
 </style>
 </head>
@@ -113,6 +130,7 @@ header h1{
 </div>
 
 <script>
+/* Hover tilt animation */
 document.querySelectorAll('.photo').forEach(photo=>{
   const base = getComputedStyle(photo).getPropertyValue('--r');
 
@@ -120,12 +138,17 @@ document.querySelectorAll('.photo').forEach(photo=>{
     const r = photo.getBoundingClientRect();
     const x = e.clientX - r.left;
     const y = e.clientY - r.top;
-    const rx = ((y - r.height/2)/(r.height/2))*-6;
-    const ry = ((x - r.width/2)/(r.width/2))*6;
+
+    const rx = ((y - r.height/2) / (r.height/2)) * -6;
+    const ry = ((x - r.width/2) / (r.width/2)) * 6;
 
     photo.classList.add('active');
     photo.style.transform =
-      `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${base}) scale(1.05)`;
+      `perspective(700px)
+       rotateX(${rx}deg)
+       rotateY(${ry}deg)
+       rotate(${base})
+       scale(1.05)`;
   });
 
   photo.addEventListener('mouseleave',()=>{
@@ -134,11 +157,17 @@ document.querySelectorAll('.photo').forEach(photo=>{
   });
 });
 
+/* Fade-out navigation (FIXED) */
 document.querySelectorAll('a').forEach(link=>{
-  link.addEventListener('click',e=>{
+  link.addEventListener('click',function(e){
     e.preventDefault();
+    const target = this.href;
+
     document.body.classList.add('fade-out');
-    setTimeout(()=>location.href=link.href,450);
+
+    setTimeout(()=>{
+      window.location.href = target;
+    }, 450);
   });
 });
 </script>
